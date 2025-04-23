@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"large-filesys/p2p"
+	"log"
+)
 
 func main() {
-	fmt.Println("stinky")
+	tr := p2p.NewTCPTransport(":3000")
+
+	if err := tr.ListenAndAccept(); err != nil {
+		log.Fatal(err)
+	}
+
+	select {}
 }
